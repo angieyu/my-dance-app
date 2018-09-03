@@ -26,11 +26,12 @@ module.exports = app => {
 
     // Post a new combinations
     app.post('/api/combinations', requireLogin, async (req, res) => {
-        const { title, proclivity } = req.body
+        const { title, proclivity, focus } = req.body
 
         const combination = new Combination({
             title,
             proclivity,
+            focus,
             _user: req.user.id
         })
 

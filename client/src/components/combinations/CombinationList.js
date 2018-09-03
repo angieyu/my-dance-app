@@ -6,7 +6,7 @@ import { fetchCombinations } from '../../actions'
 
 class CombinationList extends Component {
     componentDidMount () {
-        console.log("CombinationList mounts, run this.props.fetchCombinations()")
+        console.log('CombinationList mounts, run this.props.fetchCombinations()')
         this.props.fetchCombinations()
     }
 

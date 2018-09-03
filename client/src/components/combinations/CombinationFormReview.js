@@ -6,6 +6,7 @@ import formFields from './formFields';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
+// This is the component that appears after making a new entry for the user to confirm
 class CombinationFormReview extends Component {
   renderFields() {
     const { formValues } = this.props;
@@ -48,6 +49,7 @@ class CombinationFormReview extends Component {
   }
 
   render() {
+      console.log("HERE 1")
     return (
       <form onSubmit={this.onSubmit.bind(this)}>
         <h5>Please confirm your entries</h5>
