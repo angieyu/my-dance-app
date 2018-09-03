@@ -9,7 +9,11 @@ Starting project for a course on Advanced Node @ Udemy
 mlab database user/pass
 angela/acy12345
 
-#Start redis
+#Start redis locally
 brew services start redis
 check if redis is up
 redis-cli ping
+
+#Features of the application
+Redis to cache get calls
+The application will check Redis to see if the data is cached. If not, then it will reach out to MongoDB
