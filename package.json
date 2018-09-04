@@ -29,5 +29,9 @@
     "puppeteer": "^1.0.0",
     "redis": "^2.8.0",
     "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0"
   }
 }

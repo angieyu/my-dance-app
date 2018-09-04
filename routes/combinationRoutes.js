@@ -17,29 +17,9 @@ module.exports = app => {
 
     // Get all the combinations that are tied to the user
     app.get('/api/combinations', requireLogin, async (req, res) => {
-        const redis = require('redis')
+        const combinations = await Combination.find({ _user: req.user.id }).cache()
 
-        const redisUrl = 'redis://127.0.0.1:6379'
-        const client = redis.createClient(redisUrl)
-
-        const util = require('util')
-        // We change the behavior of client.get to return a promise,
-        // thus we do not need to use a callback
-        client.get = util.promisify(client.get)
-        // Do we have any cached data in Redis related to this query?
-        const cachedCombinations = await client.get(req.user.id)
-        // If yes, then respond right away and return
-        if (cachedCombinations) {
-            console.log('SERVING FROM CACHE')
-            return res.send(JSON.parse(cachedCombinations))
-        }
-        // If no, then we need to respond to request
-        // Look in the Combinations collection and find all where the user is this user
-        // and update our cache to store data
-        const combinations = await Combination.find({ _user: req.user.id })
-        console.log('SERVING FROM MONGODB')
         res.send(combinations)
-        client.set(req.user.id, JSON.stringify(combinations))
     })
 
     // Post a new combinations
