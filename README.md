@@ -17,3 +17,4 @@ redis-cli ping
 #Features of the application
 Redis to cache get calls
 The application will check Redis to see if the data is cached. If not, then it will reach out to MongoDB
+Overwrote the exec function in Mongoose to integrate with Redis
