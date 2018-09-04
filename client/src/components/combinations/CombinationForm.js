@@ -23,7 +23,7 @@ class CombinationForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="combination-form">
         <form onSubmit={this.props.handleSubmit(this.props.onCombinationSubmit)}>
           {this.renderFields()}
           <Link to="/combinations" className="red btn-flat white-text">

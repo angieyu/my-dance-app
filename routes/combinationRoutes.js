@@ -15,22 +15,21 @@ module.exports = app => {
         res.send(combination)
     })
 
-    // Get all the combinations by user
+    // Get all the combinations that are tied to the user
     app.get('/api/combinations', requireLogin, async (req, res) => {
-        console.log("getting all combinations - in server")
-
-        const combinations = await Combination.find({ _user: req.user.id })
+        const combinations = await Combination.find({ _user: req.user.id }).cache()
 
         res.send(combinations)
     })
 
     // Post a new combinations
     app.post('/api/combinations', requireLogin, async (req, res) => {
-        const { title, proclivity } = req.body
+        const { title, proclivity, focus } = req.body
 
         const combination = new Combination({
             title,
             proclivity,
+            focus,
             _user: req.user.id
         })
 

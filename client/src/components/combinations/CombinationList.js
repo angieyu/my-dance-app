@@ -6,18 +6,17 @@ import { fetchCombinations } from '../../actions'
 
 class CombinationList extends Component {
     componentDidMount () {
-        console.log("CombinationList mounts, run this.props.fetchCombinations()")
+        console.log('CombinationList mounts, run this.props.fetchCombinations()')
         this.props.fetchCombinations()
     }
 
     renderCombinations () {
         return map(this.props.combinations, combination => {
             return (
-              <div className="card darken-1 horizontal" key={combination._id}>
+              <div className="card darken-1 horizontal combination-list" key={combination._id}>
                   <div className="card-stacked">
                       <div className="card-content">
                           <span className="card-title">{combination.title}</span>
-                          <p>{combination.proclivity}</p>
                       </div>
                       <div className="card-action">
                           <Link to={`/combinations/${combination._id}`}>Read</Link>
